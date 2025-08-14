@@ -9,8 +9,7 @@ Make sure the container package is installed on your Mikrotik router.
 ```bash
 /system/device-mode/update container=yes
 ```
-you will need to confirm the device-mode with a press of the reset button
-
+When the change is confirmed, regardless of confirmation mode, the device will be rebooted! 
 ### 3. Network setup
 ```bash
 /interface/veth/add name=veth1 address=172.17.0.2/24 gateway=172.17.0.1
