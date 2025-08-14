@@ -9,7 +9,7 @@ echo "Network is up, starting VPN..."
 
 # Start OpenConnect in background
 echo "$ANYCONNECT_PASSWORD" | openconnect \
-  "$ANYCONNECT_SERVER" --user="$ANYCONNECT_USER" -i tun127 -b --servercert pin-sha256:${ANYCONNECT_CERT}
+  "$ANYCONNECT_SERVER" --user="$ANYCONNECT_USER" -i tun127 -b --servercert ${ANYCONNECT_CERT}
 
 # Wait for tun127 interface to appear
 echo "Waiting for tun127 interface..."
