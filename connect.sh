@@ -19,4 +19,5 @@ done
 echo "tun127 is ready"
 
 # Keep container running and forward signals to openconnect
-echo 
+echo "VPN is active. Container is running."
+wait
