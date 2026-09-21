@@ -13,8 +13,8 @@
 
 ### 2.  Container environment variables
 ```bash
-add key=ANYCONNECT_PASSWORD name=openconnect value="password"
-add key=ANYCONNECT_USER name=openconnect value="user"
+/container/envs/add key=ANYCONNECT_PASSWORD name=openconnect value="password"
+/container/envs/add key=ANYCONNECT_USER name=openconnect value="user"
 ```
 `ANYCONNECT_CERT` is optional. Add it only when OpenConnect cannot verify the server certificate through a standard certificate authority, for example when the VPN uses a self-signed certificate or a private CA:
 ```bash
