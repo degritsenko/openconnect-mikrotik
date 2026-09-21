@@ -25,9 +25,12 @@ When the change is confirmed, regardless of confirmation mode, the device will b
 add key=ANYCONNECT_PASSWORD name=openconnect value="password"
 add key=ANYCONNECT_SERVER name=openconnect value="server_url"
 add key=ANYCONNECT_USER name=openconnect value="user"
-add key=ANYCONNECT_CERT name=openconnect value="value" 
 ```
-About ANYCONNECT_CERT. This is especially necessary if you are using a self-signed certificate, because OpenConnect cannot verify it through a standard certificate authority. The pin ensures the container connects only to the correct VPN server.
+`ANYCONNECT_CERT` is optional. Add it only when OpenConnect cannot verify the server certificate through a standard certificate authority, for example when the VPN uses a self-signed certificate or a private CA:
+```bash
+add key=ANYCONNECT_CERT name=openconnect value="value"
+```
+The pin ensures the container connects only to the correct VPN server.
 To generate it for your server:
 ```bash
 echo | openssl s_client -connect <VPN_SERVER>:443 2>/dev/null \
