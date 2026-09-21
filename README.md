@@ -42,6 +42,6 @@ echo | openssl s_client -connect <VPN_SERVER>:443 2>/dev/null \
 ### 5. Container configuration
 ```bash
 /container/config/set registry-url=https://registry-1.docker.io tmpdir=/docker/tmp
-/container add remote-image=gritsenko/openconnect-mikrotik:latest interface=veth1 envlist=openconnect root-dir=/docker/openconnect start-on-boot=yes hostname=openconnect logging=yes
+/container add remote-image=gritsenko/openconnect-mikrotik:latest interface=veth1 envlist=openconnect root-dir=/docker/openconnect start-on-boot=no dns=8.8.8.8 hostname=openconnect logging=yes
 /container start number=0
 ````
