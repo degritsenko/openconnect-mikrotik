@@ -12,4 +12,4 @@ RUN chmod +x /root/connect.sh
 HEALTHCHECK --start-period=15s --retries=1 \
   CMD pgrep openconnect || exit 1
 
-CMD ["sh", "-c", "/root/connect.sh -D && ip addr && sh && tail -f /dev/null"]
+CMD ["/root/connect.sh"]
