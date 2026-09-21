@@ -1,16 +1,7 @@
 
 ## Quick Config
 
-### 1. Install container package
-
-Make sure the container package is installed on your Mikrotik router.
-
-### 2. Enable container mode
-```bash
-/system/device-mode/update container=yes
-```
-When the change is confirmed, regardless of confirmation mode, the device will be rebooted! 
-### 3. Network setup
+### 1. Network setup
 ```bash
 /interface/veth/add name=veth1 address=172.17.0.2/24 gateway=172.17.0.1
 /interface/bridge/add name=containers
@@ -20,10 +11,9 @@ When the change is confirmed, regardless of confirmation mode, the device will b
 /ip/firewall/nat/add chain=srcnat action=masquerade out-interface=containers
 ```
 
-### 4.  Container environment variables
+### 2.  Container environment variables
 ```bash
 add key=ANYCONNECT_PASSWORD name=openconnect value="password"
-add key=ANYCONNECT_SERVER name=openconnect value="server_url"
 add key=ANYCONNECT_USER name=openconnect value="user"
 ```
 `ANYCONNECT_CERT` is optional. Add it only when OpenConnect cannot verify the server certificate through a standard certificate authority, for example when the VPN uses a self-signed certificate or a private CA:
@@ -39,7 +29,7 @@ echo | openssl s_client -connect <VPN_SERVER>:443 2>/dev/null \
   | openssl dgst -sha256 -binary | base64
 ```
 
-### 5. Container configuration
+### 3. Container configuration
 ```bash
 /container/config/set registry-url=https://registry-1.docker.io tmpdir=/docker/tmp
 /container add remote-image=gritsenko/openconnect-mikrotik:latest interface=veth1 envlist=openconnect root-dir=/docker/openconnect start-on-boot=no dns=8.8.8.8 hostname=openconnect logging=yes
